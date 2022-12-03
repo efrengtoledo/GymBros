@@ -12,13 +12,21 @@ import SwiftUI
 
 struct HomeView: View {
     @State var signOutProcessing = false
+    @State private var isActive = false
     @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
+        
         ZStack {
             NavigationView {
-                
-                Text("HomeView")
+                NavigationLink(destination:
+                                CreateView(), isActive: $isActive) {
+                    Button(action: {
+                        isActive = true
+                    }) {
+                        Text("Create Workout")
+                    }
+                }
                     .navigationTitle("GymBros")
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {

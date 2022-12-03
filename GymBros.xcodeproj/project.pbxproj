@@ -12,7 +12,10 @@
 		4641C2A82911C6E8008B0FD2 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4641C2A72911C6E8008B0FD2 /* MotherView.swift */; };
 		4641C2AC2911C797008B0FD2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4641C2AB2911C797008B0FD2 /* SignInView.swift */; };
 		4641C2AE2911CA8F008B0FD2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4641C2AD2911CA8F008B0FD2 /* HomeView.swift */; };
-		4641C2B02911D36B008B0FD2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4641C2AF2911D36A008B0FD2 /* SignUpView.swift */; };
+		4652A7CF293AB043007351CF /* SIgnUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7CE293AB043007351CF /* SIgnUpView.swift */; };
+		4652A7D1293ABCD7007351CF /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D0293ABCD7007351CF /* CreateView.swift */; };
+		4652A7D3293AC019007351CF /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D2293AC019007351CF /* DropDownView.swift */; };
+		4652A7D5293AD69A007351CF /* RemindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D4293AD69A007351CF /* RemindView.swift */; };
 		46BB8E452909A9BA00D21011 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46BB8E442909A9BA00D21011 /* GoogleService-Info.plist */; };
 		46BB8E482909AB2300D21011 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 46BB8E472909AB2300D21011 /* FirebaseAnalytics */; };
 		46BB8E4A2909AB2300D21011 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 46BB8E492909AB2300D21011 /* FirebaseAuth */; };
@@ -27,7 +30,10 @@
 		4641C2A72911C6E8008B0FD2 /* MotherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		4641C2AB2911C797008B0FD2 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		4641C2AD2911CA8F008B0FD2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		4641C2AF2911D36A008B0FD2 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpView.swift; path = ../../../../../Downloads/AuthenticationStarter/AuthenticationStarter/Views/SignUpView.swift; sourceTree = "<group>"; };
+		4652A7CE293AB043007351CF /* SIgnUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIgnUpView.swift; sourceTree = "<group>"; };
+		4652A7D0293ABCD7007351CF /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		4652A7D2293AC019007351CF /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
+		4652A7D4293AD69A007351CF /* RemindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindView.swift; sourceTree = "<group>"; };
 		46BB8E442909A9BA00D21011 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46C362B728E50BB500062829 /* GymBros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymBros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C362BA28E50BB500062829 /* GymBrosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBrosApp.swift; sourceTree = "<group>"; };
@@ -74,7 +80,9 @@
 				46C362BE28E50BB600062829 /* Assets.xcassets */,
 				46C362C028E50BB600062829 /* Preview Content */,
 				4609FA9728F71BDC00D4466E /* Theme.swift */,
-				4641C2AF2911D36A008B0FD2 /* SignUpView.swift */,
+				4652A7D2293AC019007351CF /* DropDownView.swift */,
+				4652A7CE293AB043007351CF /* SIgnUpView.swift */,
+				4652A7D0293ABCD7007351CF /* CreateView.swift */,
 				4641C2AB2911C797008B0FD2 /* SignInView.swift */,
 				4641C2AD2911CA8F008B0FD2 /* HomeView.swift */,
 			);
@@ -85,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				46C362C128E50BB600062829 /* Preview Assets.xcassets */,
+				4652A7D4293AD69A007351CF /* RemindView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -169,11 +178,14 @@
 			files = (
 				4609FA9828F71BDC00D4466E /* Theme.swift in Sources */,
 				4641C2AC2911C797008B0FD2 /* SignInView.swift in Sources */,
+				4652A7D1293ABCD7007351CF /* CreateView.swift in Sources */,
 				46C362BB28E50BB500062829 /* GymBrosApp.swift in Sources */,
 				4641C2A62911C6BA008B0FD2 /* ViewRouter.swift in Sources */,
+				4652A7D3293AC019007351CF /* DropDownView.swift in Sources */,
+				4652A7CF293AB043007351CF /* SIgnUpView.swift in Sources */,
 				4641C2A82911C6E8008B0FD2 /* MotherView.swift in Sources */,
-				4641C2B02911D36B008B0FD2 /* SignUpView.swift in Sources */,
 				4641C2AE2911CA8F008B0FD2 /* HomeView.swift in Sources */,
+				4652A7D5293AD69A007351CF /* RemindView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
