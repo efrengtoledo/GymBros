@@ -46,3 +46,8 @@ https://user-images.githubusercontent.com/70542434/200054366-5099a35e-2eb3-4a10-
 
 ______________________________________________________________________________________________________________________
 
+11/09 Deliverables:
+  - Added some more hierarchy views for what will eventually be the functionality for saving and modifying workouts
+  - Im realizing that the online functionality is much harder to implement than I previously expected, but I will still add a button so I can impliment that feature in the near future
+
+![Simulator Screen Recording - iPhone 14 Pro - 2022-12-02 at 19 13 41](https://user-images.githubusercontent.com/70542434/205415361-17405537-c855-44bf-b29d-1cb9b0ffacfe.gif)
