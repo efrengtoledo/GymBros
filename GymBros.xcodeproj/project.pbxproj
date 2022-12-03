@@ -16,6 +16,8 @@
 		4652A7D1293ABCD7007351CF /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D0293ABCD7007351CF /* CreateView.swift */; };
 		4652A7D3293AC019007351CF /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D2293AC019007351CF /* DropDownView.swift */; };
 		4652A7D5293AD69A007351CF /* RemindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D4293AD69A007351CF /* RemindView.swift */; };
+		4652A7D8293AFDE5007351CF /* CreateWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D7293AFDE5007351CF /* CreateWorkout.swift */; };
+		4652A7DA293AFF72007351CF /* DropdownItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4652A7D9293AFF72007351CF /* DropdownItemProtocol.swift */; };
 		46BB8E452909A9BA00D21011 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46BB8E442909A9BA00D21011 /* GoogleService-Info.plist */; };
 		46BB8E482909AB2300D21011 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 46BB8E472909AB2300D21011 /* FirebaseAnalytics */; };
 		46BB8E4A2909AB2300D21011 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 46BB8E492909AB2300D21011 /* FirebaseAuth */; };
@@ -34,6 +36,8 @@
 		4652A7D0293ABCD7007351CF /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		4652A7D2293AC019007351CF /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		4652A7D4293AD69A007351CF /* RemindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindView.swift; sourceTree = "<group>"; };
+		4652A7D7293AFDE5007351CF /* CreateWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkout.swift; sourceTree = "<group>"; };
+		4652A7D9293AFF72007351CF /* DropdownItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownItemProtocol.swift; sourceTree = "<group>"; };
 		46BB8E442909A9BA00D21011 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46C362B728E50BB500062829 /* GymBros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymBros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C362BA28E50BB500062829 /* GymBrosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBrosApp.swift; sourceTree = "<group>"; };
@@ -54,9 +58,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4652A7D6293AFDB1007351CF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4652A7D7293AFDE5007351CF /* CreateWorkout.swift */,
+				4652A7D9293AFF72007351CF /* DropdownItemProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		46C362AE28E50BB500062829 = {
 			isa = PBXGroup;
 			children = (
+				4652A7D6293AFDB1007351CF /* ViewModel */,
 				4641C2A52911C6BA008B0FD2 /* ViewRouter.swift */,
 				46C362B928E50BB500062829 /* GymBros */,
 				46C362B828E50BB500062829 /* Products */,
@@ -179,12 +193,14 @@
 				4609FA9828F71BDC00D4466E /* Theme.swift in Sources */,
 				4641C2AC2911C797008B0FD2 /* SignInView.swift in Sources */,
 				4652A7D1293ABCD7007351CF /* CreateView.swift in Sources */,
+				4652A7DA293AFF72007351CF /* DropdownItemProtocol.swift in Sources */,
 				46C362BB28E50BB500062829 /* GymBrosApp.swift in Sources */,
 				4641C2A62911C6BA008B0FD2 /* ViewRouter.swift in Sources */,
 				4652A7D3293AC019007351CF /* DropDownView.swift in Sources */,
 				4652A7CF293AB043007351CF /* SIgnUpView.swift in Sources */,
 				4641C2A82911C6E8008B0FD2 /* MotherView.swift in Sources */,
 				4641C2AE2911CA8F008B0FD2 /* HomeView.swift in Sources */,
+				4652A7D8293AFDE5007351CF /* CreateWorkout.swift in Sources */,
 				4652A7D5293AD69A007351CF /* RemindView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

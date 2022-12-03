@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct CreateView: View {
+    @StateObject var viewModel = CreateWorkoutViewModel()
     @State private var isActive = false
+    var dropdownList: some View {
+        ForEach(viewModel.dropdowns.indices, id: \.self) { index in
+            DropDownView(viewModel: $viewModel.dropdowns[index])
+        }
+        
+    }
     var body: some View {
         ScrollView {
             VStack {
-                DropDownView()
-                DropDownView()
-                DropDownView()
-                DropDownView()
+                dropdownList
                 Spacer()
                 NavigationLink(destination: RemindView(), isActive: $isActive) {
                     Button(action: {
@@ -23,7 +27,22 @@ struct CreateView: View {
                     }) {
                         Text("Next").font(.system(size: 20, weight: .medium))
                     }
-                }.navigationBarTitle("Create")
+                }
+                .actionSheet(isPresented: Binding<Bool>(get: {
+                    viewModel.hasSelectedDropdown
+                }, set: { _ in }), content: { () -> ActionSheet in
+                    ActionSheet(title: Text("Select"),
+                                buttons: viewModel.displayedOptions.indices.map { index in
+                        let option = viewModel.displayedOptions[index]
+                        return ActionSheet.Button.default(Text(option
+                            .formatted)) {
+                            viewModel.send(action: .selectOption(index: index))
+                        }
+                        
+                        
+                    })
+                })
+                .navigationBarTitle("Create")
             }
         }
     }

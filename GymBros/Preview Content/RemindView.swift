@@ -10,7 +10,7 @@ import SwiftUI
 struct RemindView: View {
     var body: some View {
         VStack {
-            DropDownView()
+            //DropDownView()
             Spacer()
             Button(action: {
             }) {
