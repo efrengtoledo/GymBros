@@ -6,55 +6,92 @@
 //
 
 import SwiftUI
+import Combine
+
+typealias UserID = String
 
 final class CreateWorkoutViewModel: ObservableObject {
-    @Published var dropdowns: [WorkoutPartViewModel] = [
-        .init(type: .exercise),
-        .init(type: .setNumber),
-        .init(type: .restTimer),
-        .init(type: .length)
-    ]
+    @Published var exerciseDropDown = WorkoutPartViewModel(type: .exercise)
+    @Published var setNumberDropDown = WorkoutPartViewModel(type: .setNumber)
+    @Published var restTimerDropDown = WorkoutPartViewModel(type: .restTimer)
+    @Published var lengthDropDown = WorkoutPartViewModel(type: .length)
+    
+    private let userService: UserServiceProtocol
+    private let workoutService: WorkoutServiceProtocol
+    private var cancellables: [AnyCancellable] = []
     
     enum Action {
-        case selectOption(index: Int)
+        case createWorkout
     }
-    
-    var hasSelectedDropdown: Bool {
-        selectedDropdownIndex != nil
-    }
-    
-    var selectedDropdownIndex: Int? {
-        dropdowns.enumerated().first(where: {$0.element.isSelected})?.offset
-    }
-    
-    var displayedOptions: [DropdownOptions] {
-        guard let selectedDropdownIndex = selectedDropdownIndex else { return [] }
-        return dropdowns[selectedDropdownIndex].options
+
+    init(
+        userService: UserServiceProtocol = UserService(),
+        workoutService: WorkoutServiceProtocol = WorkoutService()
+    ) {
+        self.userService = userService
+        self.workoutService = workoutService
     }
     
     func send(action: Action) {
         switch action {
-        case let .selectOption(index):
-            guard let selectedDropdownIndex = selectedDropdownIndex else { return }
-            clearSelectedOptions()
-            dropdowns[selectedDropdownIndex].options[index].isSelected = true
-            clearSelectedDropdown()
+        case .createWorkout:
+            currentUserID().flatMap { userID -> AnyPublisher<Void, Error> in
+                return self.createWorkout(userID: userID)
+                
+            }
+                .sink { completion in
+                switch completion {
+                case let .failure(error):
+                    print(error.localizedDescription)
+                case .finished:
+                    print("Completed")
+                }
+            } receiveValue: { _ in
+                print("Success")
+            }.store(in: &cancellables)
         }
     }
-    func clearSelectedOptions() {
-        guard let selectedDropdownIndex = selectedDropdownIndex else { return }
-        dropdowns[selectedDropdownIndex].options.indices.forEach { index in
-            dropdowns[selectedDropdownIndex].options[index].isSelected = false
+    private func createWorkout(userID: UserID) -> AnyPublisher<Void, Error> {
+        guard let exercise = exerciseDropDown.text,
+              let setAmount = setNumberDropDown.number,
+              let restTime = restTimerDropDown.number,
+              let length = lengthDropDown.number else {
+            return Fail(error: NSError()).eraseToAnyPublisher()
         }
+        let workout = Workout(
+            exercise: exercise,
+            setNumber: setAmount,
+            restTime: restTime,
+            length: length,
+            userID: userID
+        )
+        return workoutService.create(workout).eraseToAnyPublisher()
     }
-    func clearSelectedDropdown() {
-        guard let selectedDropdownIndex = selectedDropdownIndex else { return }
-        dropdowns[selectedDropdownIndex].isSelected = false
+    
+    private func currentUserID() -> AnyPublisher<UserID, Error> {
+        print("Getting UID")
+        return userService.currentUser().flatMap { user -> AnyPublisher<UserID, Error> in
+            if let UserID = user?.uid {
+                print("The User is logged in")
+                return Just(UserID)
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            } else {
+                print("User is not logged in")
+                return self.userService
+                    .signInAnonymously()
+                    .map { $0.uid }
+                    .eraseToAnyPublisher()
+            }
+            
+        }.eraseToAnyPublisher()
     }
 }
 
 extension CreateWorkoutViewModel {
     struct WorkoutPartViewModel: DropdownItemProtocol {
+        var selectedOption: DropdownOptions
+        
         var options: [DropdownOptions]
             
         var headerTitle: String {
@@ -62,7 +99,7 @@ extension CreateWorkoutViewModel {
         }
         
         var dropdownTitle: String {
-            options.first(where: { $0.isSelected })?.formatted ?? ""
+            selectedOption.formatted
         }
         
         var isSelected: Bool = false
@@ -80,6 +117,7 @@ extension CreateWorkoutViewModel {
                 self.options = LengthOptions.allCases.map { $0.toDropdownOptions }
             }
             self.type = type
+            self.selectedOption = options.first!
             
         }
         
@@ -101,8 +139,8 @@ extension CreateWorkoutViewModel {
             
             var toDropdownOptions: DropdownOptions {
                 .init(type: .text(rawValue),
-                      formatted: rawValue.capitalized,
-                      isSelected: self == .pushups)
+                      formatted: rawValue.capitalized
+                )
             }
         }
         enum SetOptions: Int, CaseIterable, DropdownOptionsProtocol {
@@ -110,8 +148,8 @@ extension CreateWorkoutViewModel {
             
             var toDropdownOptions: DropdownOptions {
                 .init(type: .number(rawValue),
-                      formatted: "\(rawValue)",
-                      isSelected: self == .one)
+                      formatted: "\(rawValue)"
+                )
             }
         }
         enum RestOptions: Int, CaseIterable, DropdownOptionsProtocol {
@@ -119,8 +157,8 @@ extension CreateWorkoutViewModel {
             
             var toDropdownOptions: DropdownOptions {
                 .init(type: .number(rawValue),
-                      formatted: "\(rawValue) Minutes",
-                      isSelected: self == .one)
+                      formatted: "\(rawValue) Minutes"
+                )
             }
         }
         enum LengthOptions: Int, CaseIterable, DropdownOptionsProtocol {
@@ -128,10 +166,25 @@ extension CreateWorkoutViewModel {
             
             var toDropdownOptions: DropdownOptions {
                 .init(type: .number(rawValue),
-                      formatted: "\(rawValue) Days",
-                      isSelected: self == .seven)
+                      formatted: "\(rawValue) Days"
+                )
             }
         }
+    }
+}
+
+extension CreateWorkoutViewModel.WorkoutPartViewModel {
+    var text: String? {
+        if case let .text(text) = selectedOption.type {
+            return text
+        }
+        return nil
+    }
+    var number: Int? {
+        if case let .number(number) = selectedOption.type {
+            return number
+        }
+        return nil
     }
 }
 

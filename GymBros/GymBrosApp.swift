@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 
+
 @main
 struct GymBrosApp: App {
     @StateObject var viewRouter = ViewRouter()
