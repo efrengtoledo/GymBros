@@ -51,3 +51,14 @@ ________________________________________________________________________________
   - Im realizing that the online functionality is much harder to implement than I previously expected, but I will still add a button so I can impliment that feature in the near future
 
 ![Simulator Screen Recording - iPhone 14 Pro - 2022-12-02 at 19 13 41](https://user-images.githubusercontent.com/70542434/205415361-17405537-c855-44bf-b29d-1cb9b0ffacfe.gif)
+
+______________________________________________________________________________________________________________________
+
+11/16 Deliverables:
+  - Our app functionality is starting to take shape. The goal I came with for this week was to have our CreateWorkout view update in real time instead of having to refresh the page for any changes to take place. We need a View Model for this
+  - I created a view model with multiple dropdown options. For instance, we have the option to select the type of workout, the length, the rest time and the number of sets.
+  - I also redesigned the UI to support dark mode on IOS
+
+![Simulator Screen Recording - iPhone 14 Pro - 2022-12-03 at 12 12 30](https://user-images.githubusercontent.com/70542434/205455818-4248d682-f437-4671-8b81-359b523d136d.gif)
+
+
