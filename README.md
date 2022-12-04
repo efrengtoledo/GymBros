@@ -72,4 +72,8 @@ ________________________________________________________________________________
   <img width="1045" alt="image" src="https://user-images.githubusercontent.com/70542434/205514769-cba16a28-5a5b-4268-984f-ceb336048b77.png">
 
 
-
+11/30 Deliverables:
+  - Refactored a lot of my code to make it more efficient and easier to understand. This was not an easy process, as I had to redesign the entire app.
+  - At this point, I am happy with where my app is so far. I definitely bit off more than I can chew, with developing a social media app in swiftui, but I finished the basic building blocks.
+  - I would like to add user matching and communication in the future, but I do not have enough time to finish that story within the rest of the semester. 
+  - Next week, I would like to try to stage the app and put it in a beta, so I can actually use it on my phone. If it costs money, I probably will not do that then.
