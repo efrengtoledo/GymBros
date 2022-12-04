@@ -61,4 +61,15 @@ ________________________________________________________________________________
 
 ![Simulator Screen Recording - iPhone 14 Pro - 2022-12-03 at 12 12 30](https://user-images.githubusercontent.com/70542434/205455818-4248d682-f437-4671-8b81-359b523d136d.gif)
 
+______________________________________________________________________________________________________________________
+
+
+11/23 Deliverables:
+  - Added app functionality. 
+  - User can now create a workout and it will be saved in the FireStore 
+  - Eventually, the goal is to have users match and communicate, then send these workouts to each other. I dont think I have enough time to implement this feature though
+  
+  <img width="1045" alt="image" src="https://user-images.githubusercontent.com/70542434/205514769-cba16a28-5a5b-4268-984f-ceb336048b77.png">
+
+
 
